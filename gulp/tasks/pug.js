@@ -6,7 +6,8 @@ module.exports = function () {
                 pretty: true,
                 locals: {
                     $: JSON.parse($.fs.readFileSync($.config.path.pug.data, 'utf-8')),  //Чтение файла навигации
-                    release: $.config.release                                                   //Релиз или разработка
+                    release: $.config.release,                                                   //Релиз или разработка
+                    _: $.jsonpath
                 }
             }).on('error', $.gp.notify.onError()))
             .pipe($.gulp.dest($.config.path.app.html))                                          //Помещение скомпилированных HTML файлов в папку app
