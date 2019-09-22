@@ -5,10 +5,10 @@ module.exports = function () {
             interlaced: true,
             svgoPlugins: [{removeViewBox: false}],
             plugins: [
-                $.gp.imageminJpegtran({ //Сжатие JPEG
+                $.gp.imageminJpegtran({ // Сжатие JPEG
                     progressive: true
                 }),
-                $.gp.imageminPngquant() //Сжатие PNG
+                $.gp.imageminPngquant() // Сжатие PNG
             ]
         });
     });
