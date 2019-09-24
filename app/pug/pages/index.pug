@@ -1,7 +1,8 @@
 extends ../layout/main
 
 block variables
-    - var title = $.home.title
-    - var themeColor = '#000'
+    - var doc = _.value($, 'documents[?(@.name == \'index\')]')
+    - var title = doc.title
+    - var themeColor = doc.color_scheme
 
 block content

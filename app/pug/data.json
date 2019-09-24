@@ -1,5 +1,10 @@
 {
-    "home": {
-        "title": "Home"
-    }
+    "$schema": "./scheme.data.json",
+    "documents": [
+        {
+            "name": "index",
+            "title": "Home",
+            "color_scheme": "#000"
+        }
+    ]
 }
