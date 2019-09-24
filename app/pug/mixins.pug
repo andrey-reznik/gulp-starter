@@ -4,3 +4,14 @@ mixin icon(name, mod)
     - mod = mod || ''
     svg(class="icon icon-" + name + ' ' + mod)
         use(xlink:href="/img/symbol/sprite.svg#" + name)
+
+-
+    function cdoc(name) {
+        var obj = 'documents[?(@.name == \'{str}\')]'.replace('{str}', name)
+        return _.value($, obj)
+    }
+
+    function csec(name) {
+        var obj = 'sections[?(@.name == \'{str}\')]'.replace('{str}', name)
+        return _.value($, obj)
+    }
