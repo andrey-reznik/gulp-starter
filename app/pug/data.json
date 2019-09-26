@@ -1,5 +1,5 @@
 {
-    "$schema": "./scheme.data.json",
+    "$schema": "./schema.data.json",
     "documents": [
         {
             "name": "index",
