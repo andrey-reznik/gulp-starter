@@ -32,3 +32,7 @@ mixin form(formObj, formClass)
         var obj = 'sections[?(@.name == \'{str}\')]'.replace('{str}', name)
         return _.value($, obj)
     }
+
+    function cov(obj, val) {
+        return _.value(obj, val)
+    }
