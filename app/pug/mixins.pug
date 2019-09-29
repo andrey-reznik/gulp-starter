@@ -10,17 +10,19 @@ mixin form(formObj, formClass)
     +b.FORM(action= formObj.action method= formObj.method class= formClass)
         .form-group
             each i in formObj.inputs
-                label(for= i.id class= i.class)!= i.label
+                if i.label
+                    label(for= i.label.id class= i.label.class)!= i.label.value
                 - i.label = undefined
                 case i.type
                     default
                         input&attributes(i)
                     when 'textarea'
                         textarea&attributes(i)
-            each b in formObj.buttons
-                - var value = b.value
-                - b.value = undefined
-                button&attributes(b)!= value
+            if formObj.buttons
+                each b in formObj.buttons
+                    - var value = b.value
+                    - b.value = undefined
+                    button&attributes(b)!= value
 
 -
     function cdoc(name) {
