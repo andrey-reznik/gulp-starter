@@ -232,6 +232,16 @@
                                 ],
                                 "pattern": "^(.*)$"
                             },
+                            "class": {
+                                "$id": "#/properties/form/properties/inputs/items/properties/class",
+                                "type": "string",
+                                "title": "The Class Schema",
+                                "default": "",
+                                "examples": [
+                                    ""
+                                ],
+                                "pattern": "^(.*)$"
+                            },
                             "checked": {
                                 "$id": "#/properties/form/properties/inputs/items/properties/checked",
                                 "type": "boolean",
@@ -655,6 +665,9 @@
                             ""
                         ],
                         "pattern": "^(.*)$"
+                    },
+                    "form": {
+                        "$ref": "#/properties/form"
                     }
                 }
             }
