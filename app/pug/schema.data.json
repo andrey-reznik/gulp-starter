@@ -96,6 +96,16 @@
                     ],
                     "pattern": "^(.*)$"
                 },
+                "class": {
+                    "$id": "#/properties/form/properties/method",
+                    "type": "string",
+                    "title": "The Class Schema",
+                    "default": "",
+                    "examples": [
+                        ""
+                    ],
+                    "pattern": "^(.*)$"
+                },
                 "title": {
                     "$id": "#/properties/form/properties/title",
                     "type": "string",
