@@ -3,7 +3,6 @@ global.$ = {
     config: config,
     fs: require('fs'),
     gulp: require('gulp'),
-    jsonpath: require('jsonpath'),
     gp: require('gulp-load-plugins')(config.loadPlugins)
 };
 
