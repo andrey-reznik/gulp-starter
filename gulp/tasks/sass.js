@@ -2,7 +2,7 @@
 module.exports = function () {
     $.gulp.task('sass', function () {
         return $.gulp.src($.config.path.watch.sass.src)
-            .pipe($.gp.if($.config.release, $.gp.sourcemaps.init()))            // Инициализация source-maps
+            .pipe($.gp.if($.config.release === false, $.gp.sourcemaps.init()))  // Инициализация source-maps
             .pipe($.gp.sass({
                     includePaths: ['node_modules/']
                 }).on('error', $.gp.notify.onError()))                          // Сборка SASS в CSS + включение уведомлений в системном трее при ошибке
