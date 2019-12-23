@@ -9,7 +9,7 @@ module.exports = function () {
                     release: $.config.release,                                          // Релиз или разработка
                     _: $.gp.jsonpath                                                       // Библиотека для работы с JSON объектами
                 }
-            }).on('error', $.gp.notify.onError()))
+            }).on('error', $.gp.notify.onError('<%= error.message %>')))
             .pipe($.gulp.dest($.config.path.app.html))                                  // Помещение собранных HTML файлов в папку app
             .on('end', $.gp.browserSync.reload);                                        // Обновление браузера после завершения таска
     });
