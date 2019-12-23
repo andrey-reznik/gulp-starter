@@ -1,6 +1,6 @@
 //Удаление папки со сборкой
 module.exports = function () {
     $.gulp.task('clear:dist', function () {
-        return $.gp.del($.config.path.build.html) // Удаление папки продакшена
+        return $.gp.del($.config.path.build.html); // Удаление папки продакшена
     });
 };

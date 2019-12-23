@@ -2,7 +2,7 @@
 module.exports = function () {
     $.gulp.task('args', function () {
         return new Promise(function (resolve, reject) {
-            $.gp.yargs.argv.release ? $.config.release = true : null
+            $.gp.yargs.argv.release ? $.config.release = true : null;
             resolve();
         });
     });
