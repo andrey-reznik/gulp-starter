@@ -15,6 +15,7 @@ module.exports = function () {
         return $.gulp.src($.config.path.watch.js)
             .pipe($.gp.if($.config.release === false, $.gp.sourcemaps.init()))        // Инициализация source-maps
             .pipe($.gp.concat('main.js'))                                             // Конкатенация JS файлов
+            .pipe($.gp.babel())                                                       // Babel - компиляция JS
             .pipe($.gp.if($.config.release, $.gp.uglify()))                           // Минимизация JS файла
             .pipe($.gp.if($.config.release, $.gp.rename({suffix: '.min'})))           // Переименоввывание JS файла
             .pipe($.gp.if($.config.release, $.gp.sourcemaps.write('/')))              // Запись source-map
