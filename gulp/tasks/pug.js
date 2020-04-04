@@ -10,6 +10,8 @@ module.exports = function () {
                     _: $.gp.jsonpath                                                            // Библиотека для работы с JSON объектами
                 }
             }).on('error', $.gp.notify.onError('<%= error.message %>')))                        // Показвает сообщение при ошибке
+            .pipe($.gp.if($.config.release, $.gp.w3cHtmlValidator()))
+            .pipe($.gp.htmlBemValidator())
             .pipe($.gulp.dest($.config.path.app.html))                                          // Помещение собранных HTML файлов в папку app
             .on('end', $.gp.browserSync.reload);                                                // Обновление браузера после завершения таска
     });
