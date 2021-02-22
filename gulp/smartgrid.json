@@ -1,10 +1,10 @@
 {
   "settings": {
     "filename": "_smart-grid",
-    "outputStyle": "sass",
+    "outputStyle": "less",
     "columns": 12,
     "offset": "30px",
-    "mobileFirst": false,
+    "mobileFirst": true,
     "container": {
       "maxWidth": "1140px",
       "fields": "30px"
@@ -27,5 +27,5 @@
       }
     }
   },
-  "outputFolder": "app/sass/tools"
+  "outputFolder": "src/styles/tools"
 }

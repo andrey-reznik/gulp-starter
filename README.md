@@ -1,10 +1,22 @@
-# Work Gulp template
-### Installation
+# Gulp starter template
+Clone via http
+```shell
+git clone https://github.com/andrey-reznik/gulp-starter.git
 ```
-$ git clone git@bitbucket.org:andrey-reznik/work-template.git
-$ yarn install
+or ssh
+```shell
+git clone git@github.com:andrey-reznik/gulp-starter.git
 ```
-### Start server
+then install dependencies
+```shell
+yarn install
 ```
-$ gulp
+and run development server
+```shell
+yarn serve
+```
+
+to build project, type next:
+```shell
+yarn build
 ```

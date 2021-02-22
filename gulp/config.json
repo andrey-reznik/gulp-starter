@@ -8,57 +8,45 @@
       "fonts": "dist/fonts"
     },
     "src": {
-      "html": "app/serve/*.html",
-      "js": "app/serve/js/**/*.{js,map}",
-      "css": "app/serve/css/**/*.{css,map}",
-      "img": "app/serve/img/**/*.{jpg,png,gif,svg}",
-      "fonts": "app/serve/fonts/**/*.*"
+      "html": "dist_serve/*.html",
+      "js": "dist_serve/js/**/*.{js,map}",
+      "css": "dist_serve/css/**/*.{css,map}",
+      "img": "dist_serve/img/**/*.{jpg,png,gif,svg}",
+      "fonts": "dist_serve/fonts/**/*.*"
     },
     "watch": {
       "pug": {
-        "pages": "app/pug/pages/**/*.pug",
-        "all": "app/pug/**/*.pug"
+        "pages": "src/pug/pages/**/*.pug",
+        "all": "src/pug/**/*.pug"
       },
       "data": {
-        "data": "app/pug/data.json"
+        "data": "src/pug/data.json"
       },
-      "js": "app/pug/**/*.js",
-      "sass": {
-        "watch": "app/sass/**/*.sass",
-        "src": "app/sass/main.sass"
+      "js": "src/**/*.js",
+      "scss": {
+        "watch": "src/styles/**/*.scss",
+        "src": "src/styles/main.scss"
       },
-      "fonts": "app/fonts/**/*.*",
-      "img": "app/img/**/*.{jpg,png,gif,svg}",
-      "svg": "app/img/**/*.svg"
+      "fonts": "src/fonts/**/*.*",
+      "img": "src/img/**/*.{jpg,png,gif,svg}",
+      "svg": "src/img/**/*.svg"
     },
     "app": {
-      "html": "app/serve",
-      "js": "app/serve/js",
-      "css": "app/serve/css",
-      "img": "app/serve/img",
-      "fonts": "app/serve/fonts"
+      "html": "dist_serve",
+      "js": "dist_serve/js",
+      "css": "dist_serve/css",
+      "img": "dist_serve/img",
+      "fonts": "dist_serve/fonts"
     },
     "pug": {
-      "data": "./app/pug/data.json"
+      "data": "./src/pug/data.json"
+    },
+    "js": {
+      "entry": "src/js/index.js"
     },
     "libs": {
-      "js": "gulp/sources/js.json",
       "fonts": "gulp/sources/fonts.json"
-    },
-    "tasks": [
-      "./gulp/tasks/args",
-      "./gulp/tasks/dist",
-      "./gulp/tasks/clear",
-      "./gulp/tasks/fonts",
-      "./gulp/tasks/img",
-      "./gulp/tasks/scripts",
-      "./gulp/tasks/pug",
-      "./gulp/tasks/sass",
-      "./gulp/tasks/serve",
-      "./gulp/tasks/smartgrid",
-      "./gulp/tasks/svg",
-      "./gulp/tasks/watch"
-    ]
+    }
   },
   "browserSync": {
     "tunnel": false,
@@ -68,12 +56,14 @@
     "config": "gulp/smartgrid.json"
   },
   "autoPrefixer": {
-    "browsers": ["last 15 versions"],
     "cascade": false
   },
-  "loadPlugins":{
-    "pattern": ["*"]
+  "loadPlugins": {
+    "pattern": [
+      "gulp-*",
+      "(?!gulp-w3c)",
+      "browser-sync"
+    ]
   },
-  "release": false,
-  "gulpRoot": "../../"
+  "gulpRoot": "../"
 }

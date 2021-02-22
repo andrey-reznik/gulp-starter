@@ -1,25 +1,26 @@
-//Сборка сторонних JS бибилиотек
-module.exports = function () {
-    $.gulp.task('js:plugins', function () {
-        return $.gulp.src($.gp.requireReload($.config.gulpRoot + $.config.path.libs.js))
-            .pipe($.gp.if($.config.release === false, $.gp.sourcemaps.init()))        // Инициализация source-maps
-            .pipe($.gp.concat('plugins.js'))                                          // Конкатенация JS файлов
-            .pipe($.gp.if($.config.release, $.gp.uglify()))                           // Минимизация JS файла
-            .pipe($.gp.if($.config.release, $.gp.rename({suffix: '.min'})))           // Переименоввывание JS файла
-            .pipe($.gp.if($.config.release, $.gp.sourcemaps.write('/')))              // Запись source-map
-            .pipe($.gulp.dest($.config.path.app.js))                                  // Перемещение готового файла в папку JS
-            .pipe($.gp.browserSync.reload({stream: true}));                           // Обновление браузера
-    });
+/* global $ */
+const scripts = () => {
+  const webpackConfig = {
+    mode: $.isDev ? 'development' : 'production',
+    devtool: $.isDev ? 'eval-source-map' : false,
+    output: {
+      filename: 'main.js'
+    },
+    module: {
+      rules: [
+        {
+          test: /\.js$/i,
+          loader: 'babel-loader',
+          exclude: /node_modules/,
+        }
+      ]
+    }
+  }
 
-    $.gulp.task('js:main', function () {
-        return $.gulp.src($.config.path.watch.js)
-            .pipe($.gp.if($.config.release === false, $.gp.sourcemaps.init()))        // Инициализация source-maps
-            .pipe($.gp.concat('main.js'))                                             // Конкатенация JS файлов
-            .pipe($.gp.babel())                                                       // Babel - компиляция JS
-            .pipe($.gp.if($.config.release, $.gp.uglify()))                           // Минимизация JS файла
-            .pipe($.gp.if($.config.release, $.gp.rename({suffix: '.min'})))           // Переименоввывание JS файла
-            .pipe($.gp.if($.config.release, $.gp.sourcemaps.write('/')))              // Запись source-map
-            .pipe($.gulp.dest($.config.path.app.js))                                  // Перемещение готового файла в папку JS
-            .pipe($.gp.browserSync.reload({stream: true}));                           // Обновление браузера
-    });
+  return $.gulp.src($.config.path.js.entry)
+    .pipe($.webpackStream(webpackConfig))
+    .pipe($.gulp.dest($.config.path.app.js))
+    .pipe($.browserSync.stream());
 };
+
+export default scripts

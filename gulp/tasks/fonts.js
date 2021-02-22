@@ -1,8 +1,12 @@
-//Сборка шрифтов
-module.exports = function () {
-    $.gulp.task('fonts', function () {
-        return $.gulp.src($.gp.requireReload($.config.gulpRoot + $.config.path.libs.fonts))
-            .pipe($.gulp.dest($.config.path.app.fonts)) // Перемещение файлов шрифтов в папку fonts
-            .on('end', $.gp.browserSync.reload);        // Обновление браузера после завершения таска
-    });
+/* global $ */
+const fonts = () => {
+  const fontsSources = $.requireReload(`${$.config.gulpRoot}${$.config.path.libs.fonts}`)
+  if (fontsSources.length) {
+    return $.gulp.src(fontsSources)
+      .pipe($.gulp.dest($.config.path.app.fonts))
+      .on('end', $.browserSync.reload);
+  }
+  return new Promise((resolve) => resolve())
 };
+
+export default fonts
